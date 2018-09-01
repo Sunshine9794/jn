@@ -1,0 +1,60 @@
+ul,ol,li{
+  list-style: none;
+}
+body,html{
+  height: 100%;
+  width: 100%;
+}
+.mapboxgl-ctrl-bottom-left,.mapboxgl-ctrl-bottom-right{
+  display: none;
+}
+#header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  height: 75px;
+  //margin-left: -691px;
+
+  .headerimg{
+    max-width: 1478px;
+    margin: 0 auto;
+    position: relative;
+    height: 65px;
+    background: url("../images/header.png") no-repeat;
+    background-size: 100% 100%;
+
+  }
+  #toogle{
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    text-align: right;
+    top: 45px;
+
+    a{
+      display: inline-block;
+      width: 79px;
+      height: 28px;
+      cursor: pointer;
+      background-image: url("../images/toogle.png");
+      background-repeat: no-repeat;
+      text-align: center;
+      color: #fff;
+      line-height: 28px;
+      &:hover{
+        text-decoration: none;
+        background-image: url("../images/toogle-act.png")!important;
+        color: #ECE420!important;
+      }
+    }
+    .toogle-act{
+      background-image: url("../images/toogle-act.png")!important;
+      color: #ECE420!important;
+    }
+  }
+
+}
+.anchorBL{
+  display: none;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>分析数据</title>
+  <script src="js/echarts.js"></script>
+
+  <script src="js/echarts-gl.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-select.css">
+  <script src='js/mapbox-gl.js'></script>
+  <link href='css/mapbox-gl.css' rel='stylesheet' />
+<!--  <link rel="stylesheet" href="css/maptalks.css">
+  <script src="js/maptalks.min.js"></script>-->
+  <link rel="stylesheet" href="scss/common.css">
+  <link rel="stylesheet" href="scss/Analyzedata.css">
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+  <script src="js/bootstrap.js"></script>
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="js/bootstrap-select.js"></script>
+  <script src="js/i18n/defaults-zh_CN.js"></script>
+  <script src="js/Analyzedata.js"></script>
+</head>
+<body>
+<div id="header">
+  <div class="headerimg">
+    <div id="toogle">
+      <a href="index.html">统计数据</a>
+      <a href="jcsj.html">监测数据</a>
+      <a class="toogle-act" href="Analyzedata.html">分析数据</a>
+      <a href="http://124.133.238.162:20006/szx/log-form.action" target="_blank">业务系统</a>
+    </div>
+  </div>
+ 
+</div>
+<div id='map' style='width: 100vw; height: 100vh;'></div>
+<div id="left-top-box">
+  <div class="box-img">
+    <img src="images/sys.png" alt="">
+  </div>
+  <div class="box-data first-data">
+    <div class="title">
+      <h2>在线站点</h2>
+    </div>
+    <div class="num">
+      <span></span><font>个</font>
+    </div>
+  </div>
+  <div class="box-data">
+    <div class="title">
+      <h2>库存数据</h2>
+    </div>
+    <div class="num">
+      <span></span><font>条</font>
+    </div>
+  </div>
+</div>
+<div id="left-center-box" >
+  <div class="box-img">
+    <img src="images/zd.png" alt="">
+  </div>
+ <div class="box-data first-data" >
+  <div class="title">
+    <h2>实验室站点</h2>
+  </div>
+  <div class="num">
+    <span></span><font>个</font>
+  </div>
+</div>
+<div class="box-data">
+  <div class="title">
+    <h2>库存数据</h2>
+  </div>
+  <div class="num">
+    <span></span><font>条</font>
+  </div>
+</div>
+</div>
+<div id="left-bottom-box" class="par-box">
+  <div class="box-tit">
+    <span>监测数据合格率</span>
+    <div class="toogle-btn">
+      <button class="btn-act">在线数据</button>
+      <button>实验室数据</button>
+    </div>
+    <img src="images/qp.png" class="chart-qp-icon" alt="">
+  </div>
+  <div class="box-chart">
+    <div id="left-bottom-chart" class="charts">
+
+    </div>
+  </div>
+</div>
+<div id="right-top-box" class="par-box">
+  <div class="box-tit">
+
+  <span>站点合格率对比</span>
+
+    <div class="toogle-btn">
+      <button class="btn-act">在线数据</button>
+      <button>实验室数据</button>
+    </div>
+    <img src="images/qp.png" class="chart-qp-icon" alt="">
+  </div>
+  <div class="box-chart">
+    <select id="lunch1" class="selectpicker" data-max-options="5" multiple data-live-search="true"  data-width="68%" title="选择站点" ></select>
+    <select id="selcetTime" class="selectpicker"  data-width="80px"  >
+      <option value="2011">2011</option>
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+    </select>
+    <span id="fullYear"></span>
+    <div id="right-top-chart"  class="charts" style="height: 200px;">
+
+    </div>
+  </div>
+</div>
+<div id="right-bottom-box" class="par-box">
+  <div class="box-tit">
+    <span>多站点历年合格率</span>
+    <div class="toogle-btn">
+      <button class="btn-act">在线数据</button>
+      <button>实验室数据</button>
+    </div>
+    <img src="images/qp.png" class="chart-qp-icon" alt="">
+  </div>
+  <div class="box-chart">
+    <select id="lunch" class="selectpicker" data-max-options="5" multiple data-live-search="true"   title="选择站点" ></select>
+    <div id="right-bottom-chart" class="charts">
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

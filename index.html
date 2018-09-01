@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>统计分析</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="scss/common.css">
+  <link rel="stylesheet" href="scss/tjsj.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/echarts.js"></script>
+  <!--引入百度地图的jssdk，这里需要使用你在百度地图开发者平台申请的 ak-->
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=TaIo2F3hwGsBXvuYsNzQ8r5jYZYgcfGm"></script>
+  <!-- 引入 ECharts -->
+  <script src="js/echarts.min.js"></script>
+  <!-- 引入百度地图扩展 -->
+  <script src="js/bmap.js"></script>
+ <!-- <script src="js/echarts-gl.js"></script>
+  <script src='js/mapbox-gl.js'></script>
+  <link href='css/mapbox-gl.css' rel='stylesheet' />-->
+  <script src="js/tjsj.js"></script>
+  <style>
+    #header .headerimg{
+      background: url(./images/header2.png) no-repeat;
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+<body>
+<div id="header">
+
+  <div class="headerimg">
+    <ul class="tog-skin">
+      <li title="normal" style="background: #F1B64E"></li>
+      <li title="light" style="background: #8DBDC1"></li>
+      <li title="restore" style="background: #687482"></li>
+    </ul>
+    <div id="toogle">
+      <a class="toogle-act" href="index.html">统计数据</a>
+      <a href="jcsj.html">监测数据</a>
+      <a href="Analyzedata.html">分析数据</a>
+      <a href="http://124.133.238.162:20006/szx/log-form.action" target="_blank">业务系统</a>
+    </div>
+  </div>
+
+</div>
+<div id="map"></div>
+<div id="left-top-box">
+  <div class="box-tit">
+    <h5>水司情况</h5>
+  </div>
+  <div class="cont">
+    <div class="tj-box">
+      <div class="tj-img">
+        <div class="tj-cont">
+          <p class="impor">7个</p>
+          <p>水司总数</p>
+        </div>
+      </div>
+      <div class="box-data">
+        <p>实际供水量 ： <font class="impor"></font>万m³/日</p>
+        <p>服务人口 ： <font class="impor"></font>万人</p>
+      </div>
+    </div>
+    <div id="data-table">
+      <h6></h6>
+      <div class="row ">
+        <div class="col-md-4">
+          <p>年供水量</p>
+          <p><font class="impor"></font>万立方米</p>
+        </div>
+        <div class="col-md-4">
+          <p>平均日供水量</p>
+          <p><font class="impor"></font>万立方米</p>
+        </div>
+        <div class="col-md-4">
+          <p>最高日供水量</p>
+          <p><font class="impor"></font>万立方米</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <p>服务人口</p>
+          <p><font class="impor"></font>万</p>
+        </div>
+        <div class="col-md-3">
+          <p>年售水量</p>
+          <p><font class="impor"></font>万立方米</p>
+        </div>
+        <div class="col-md-3">
+          <p>免费供水量</p>
+          <p><font class="impor"></font>万立方米</p>
+        </div>
+        <div class="col-md-3">
+          <p>漏损率</p>
+          <p><font class="impor"></font>%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="left-bom-box">
+  <div class="box-tit">
+    <h5>区域统计 (监测能力、供水信息)</h5>
+  </div>
+  <div class="cont">
+  <div class="tj-box">
+    <div class="tj-img">
+      <div class="tj-cont">
+      <p class="impor">3</p>
+      <p>实验室</p>
+      </div>
+    </div>
+    <div class="box-data">
+      <p>实验室采样点总数 ： <font class="impor"></font>个</p>
+      <p>在线监测站点总数 ： <font class="impor"></font>个</p>
+    </div>
+
+  </div>
+    <div id="data-chart">
+      <ul class="data-toogle">
+        <li class="data-act">监测<br>能力</li>
+        <!--<li>监测<br>站点</li>-->
+        <li>水厂<br>日供水量</li>
+        <li>供水管网<br>总长度</li>
+        <li>水厂<br>服务人口</li>
+        <li>官网新建<br>概算投资</li>
+        <li>水司<br>数量</li>
+        <!--<li>地图<br>展示</li>-->
+      </ul>
+      <div class="chart" id="chart">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div id="right-top-box">
+  <div class="box-tit">
+    <h5>水厂情况</h5>
+  </div>
+  <div class="cont">
+    <div class="tj-box">
+      <div class="tj-img">
+        <div class="tj-cont">
+          <p class="impor"></p>
+          <p>水厂总数</p>
+        </div>
+      </div>
+      <div class="box-data">
+        <p>生产能力 ： <font class="impor"></font>万m/3日</p>
+        <p>改造规模 ： <font class="impor"></font>万m/3日</p>
+      </div>
+
+    </div>
+    <ul class="clearfix">
+      <li class="sc-act"><span>设计供水</span></li>
+      <li><span>实际供水</span></li>
+      <li><span>年供水量</span></li>
+      <li><span>平均日产水</span></li>
+      <li><span>水源地</span></li>
+    </ul>
+    <div id="chart2"></div>
+  </div>
+</div>
+<div id="right-bom-box">
+  <div class="box-tit">
+    <h5>管网情况</h5>
+  </div>
+  <div class="cont">
+    <div class="tj-box">
+      <div class="tj-img">
+        <div class="tj-cont">
+          <p class="impor"></p>
+          <p>公里</p>
+        </div>
+      </div>
+      <div class="box-data">
+        <p>拟改造 ： <font class="impor"></font>公里</p>
+        <p>拟新建 ： <font class="impor"></font>公里</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

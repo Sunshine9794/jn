@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>监测数据</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="scss/common.css">
+  <link rel="stylesheet" href="scss/jcsj.css">
+  <link rel="stylesheet" href="skin/jedate.css">
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+  <link rel="stylesheet" href="css/bootstrap-select.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/bootstrap-select.js"></script>
+  <script src="js/i18n/defaults-zh_CN.js"></script>
+  <script src="js/hhDrop.js"></script>
+  <script src="js/jquery.jedate.js"></script>
+  <script src="js/time.js"></script>
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <!--引入百度地图的jssdk，这里需要使用你在百度地图开发者平台申请的 ak-->
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=TaIo2F3hwGsBXvuYsNzQ8r5jYZYgcfGm"></script>
+  <!-- 引入 ECharts -->
+  <script src="js/echarts.min.js"></script>
+  <!-- 引入百度地图扩展 -->
+  <script src="js/bmap.js"></script>
+  <style>
+    .btn-primary.focus, .btn-primary:focus{
+      border: 0;
+    }
+
+  </style>
+</head>
+<body>
+<div id="header">
+
+  <div class="headerimg">
+    <div id="toogle">
+      <a href="index.html">统计数据</a>
+      <a class="toogle-act" href="jcsj.html">监测数据</a>
+      <a href="Analyzedata.html">分析数据</a>
+      <a href="http://124.133.238.162:20006/szx/log-form.action" target="_blank">业务系统</a>
+    </div>
+  </div>
+
+</div>
+<img src="images/close.png" id="close" alt="">
+  <iframe id="fullScreenQj" src=""></iframe>
+  <div id="chart-qp"></div>
+<div id="chart_box">
+  <div class="left-box">
+    <div class="map-box">
+      <div class="box-header">
+        <h4>地图浏览</h4>
+      </div>
+      <div class="left-chart" id="bdmap"></div>
+    </div>
+    <div class="qj-box">
+      <div class="box-header">
+        <h4>资源浏览</h4>
+        <ul class="toggle">
+          <li class="toogle-active">站点实景</li>
+          <!--<li>图层管理</li>-->
+        </ul>
+        <img src="images/fullScreen.png" id="fullScreen" alt="">
+
+      </div>
+      <div class="left-chart">
+        <iframe id="qj" src="http://180.76.165.145:85/LYH/"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="right-box">
+    <div class="charts-header">
+      <h4>要素监测</h4>
+      <div class="search">
+        <select id="lunch" class="selectpicker"   data-live-search="true" title="选择站点" >
+
+        </select>
+        <span class="name">开始时间</span> <input class="datainp wicon" id="inpstart" type="text" placeholder="开始日期" >
+        <span class="name">结束时间</span>  <input class="datainp wicon" id="inpend" type="text" placeholder="结束日期" >
+
+        <button type="button" class="btn btn-info" style="   position: relative;
+  background: #fff;
+    position: relative;
+    vertical-align: top;
+    margin-top: 4px;
+    margin-left: 2%;
+    margin-right: 1%;
+    color: #0074D6;    border: 0; " id="searches">开始查询</button>
+      </div>
+
+    </div>
+    <div class="right-chart">
+      <div class="chart-toogle">
+      </div>
+      <div class="toogle"><button class="btn btn-xs btn-primary" id="prev">上一页</button><span id="prevNum">1</span>/<span id="nextNum"></span><button class="btn btn-xs btn-primary" id="next">下一页</button></div>
+    </div>
+
+  </div>
+</div>
+<script src="js/jcsj.js"></script>
+<script>
+ $(function () {
+   $('#hhDrop00').hhDrop({});
+
+ })
+</script>
+</body>
+</html>
