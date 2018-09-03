@@ -211,6 +211,25 @@ body,html{
     height: 68% ;
   }
 }
+#control{
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  bottom: 11%;
+  right: 50%;
+  padding: 6px;
+  transform: translateX(-50%);
+  z-index: 999999;
+  margin-right: -385px;
+  background: rgba(0,0,0,.8);
+  li{
+    color: #fff;
+  }
+  input[type='checkbox']{
+
+    float: right;
+}
+}
 #right-bom-box{
   height: 21%;
   bottom: 2%;

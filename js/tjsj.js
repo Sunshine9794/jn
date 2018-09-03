@@ -883,8 +883,150 @@ function mapData(myChart3) {
           }
         }
       }
-      console.log(alirl)
-    }
+      var list1 = []
+      /* var list1 = []*/
+
+      var list2 = []
+      var gjlist = []
+      var newsList = alirl.concat();
+      var index = []
+      var sc = '水库';
+      var str = ''
+      var name = []
+      for (var i in newsList) {
+        if (newsList[i].fromName.indexOf(sc) != -1) {
+          if (newsList[i].fromName != '凤凰路泵站（凤凰湖水库）') {
+            // list1.push(alirl[i].fromName)
+
+            if (name.indexOf(newsList[i].fromName) == -1) {
+               name.push(newsList[i].fromName)
+              str+='<li><label for="control'+i+'">'+newsList[i].fromName+'</label><input id="control'+i+'" checked type="checkbox" class="kjControl" value="'+newsList[i].fromName+'"></li>'
+            }
+          }
+        }
+      }
+      $("#control").html(str)
+        $('.kjControl').change(function () {
+          var newList = alirl.concat();
+          for (var i = 0; i < $('.kjControl').length; i++) {
+            var val = $('.kjControl').eq(i).val()
+            if (!$('.kjControl').eq(i).is(':checked')) {
+              if (list1.indexOf(val) == -1) {
+                list1.push(val)
+              }
+            }
+          }
+          for (var i in newList) {
+            if (newList[i].fromName.indexOf(sc) != -1) {
+              if (newList[i].fromName != '凤凰路泵站（凤凰湖水库）') {
+                // list1.push(alirl[i].fromName)
+
+                if (gjlist.indexOf(newList[i].fromName) == -1) {
+                  gjlist.push(newList[i].fromName)
+                }
+                if (list1.indexOf(newList[i].fromName) != -1) {
+                  if (index.indexOf(i) == -1) {
+                    index.push(i)
+                  }
+                }
+                //index.push(i)
+                //newList.splice(i,1)
+
+                /*
+                            list1.push(alirl[i].toName)
+                            newList = alirl.slice(i,1)*/
+              }
+            }
+          }
+          /*  for(var q in index){
+              if(q==0){
+                newList.splice(index[q],1)
+
+              }else{
+                newList.splice(index[q]-q,1)
+
+              }
+            }
+            console.log(newList)*/
+          // $('.kjControl').change(function () {
+          //    var val = $(this).val()
+          //   if($(this).is(':checked')){
+          //      if(list1.indexOf(val) == -1){
+          //        list1.push(val)
+          //      }
+          //   }else{
+          //
+          //       list1.splice(list1.indexOf(val),1)
+          //     }
+          z()
+
+          function z() {
+            var len = list1.length;
+            var sum = 0
+            var index = []
+            for (var k in list1) {
+              for (var q in newList) {
+                if (list1[k] == newList[q].fromName) {
+                  list2.push(newList[q].toName)
+                  if (index.indexOf(q) == -1) {
+                    index.push(q)
+                  }
+                } else {
+                  sum++
+                }
+              }
+            }
+            for (var q in index) {
+              if (q == 0) {
+                newList.splice(index[q], 1)
+
+              } else {
+                newList.splice(index[q] - q, 1)
+              }
+            }
+            index = []
+            list1 = list2
+            list2 = []
+            if (sum != 0) {
+              z()
+            } else {
+              list1 = []
+            }
+          }
+
+          myChart3.setOption({
+            series: [{}, {
+              data: newList
+            }, {}, {}]
+          })
+          console.log(newList)
+        })
+        /*  })*/
+
+        /*  list1.push(alirl[i].toName)
+          newList = alirl.slice(i,1)
+          z()
+          function z() {
+            var len = list1.length;
+            for(var k in list1){
+              for(var q in alirl){
+                if(list1[k] == alirl[q].fromName){
+                  list2.push(alirl[q].toName)
+                  newList = alirl.slice(q,1)
+                }else{
+                  len++
+                }
+              }
+            }
+            list1=list2
+            list2=[]
+            if(len!=0){
+              z()
+            }
+          }*/
+
+        console.log(alirl)
+      }
   });
 
 
